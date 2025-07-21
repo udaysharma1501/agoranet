@@ -20,6 +20,7 @@ const authenticateToken = (req, res, next) => {
     }
 
     req.user = { id: user.id };
+    console.log('Authenticated user ID:', req.user.id);
     next();
   });
 };
