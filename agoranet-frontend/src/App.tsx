@@ -1,9 +1,11 @@
-import TestComponent from "./TestComponent";
+import React from 'react';
+import Home from './pages/Home';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <TestComponent />
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      <Home />
     </div>
   );
 }
