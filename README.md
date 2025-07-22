@@ -1,6 +1,6 @@
 # AgoraNet
 
-**A modern community and Q&A platform for your college—connecting students, faculty, and staff for discussion, problem-solving, and sharing essential information. Inspired by the ancient Greek Agora, reimagined for today’s digital campus.**
+A modern community and Q&A platform for your college—connecting students, faculty, and staff for discussion, problem-solving, and sharing essential information. Inspired by the ancient Greek Agora, reimagined for today’s digital campus.
 
 ---
 
