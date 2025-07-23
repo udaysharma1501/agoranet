@@ -4,7 +4,10 @@ const PingTest = () => {
   const [response, setResponse] = useState<string>("Loading...");
 
   useEffect(() => {
-    fetch("https://agoranet.onrender.com/api/ping")
+
+    const backendURL = import.meta.env.VITE_BACKEND_URL;
+    
+    fetch(`${backendURL}/api/ping`)
       .then((res) => res.json())
       .then((data) => setResponse(data.message))
       .catch((err) => {
