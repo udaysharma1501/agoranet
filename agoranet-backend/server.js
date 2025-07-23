@@ -10,6 +10,12 @@ connectDB();                // Connect to MongoDB
 
 const app = express();
 
+// --- test --- test --- test --- test --- test --- test --- test --- test --- test --- test ---
+app.get("/api/ping", (req, res) => {
+  res.json({ message: "pong from backend" });
+});
+// --- test --- test --- test --- test --- test --- test --- test --- test --- test --- test ---
+
 // Middlewares
 app.use(cors());
 app.use(express.json());    // Parse JSON bodies
