@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-import cors from "cors";
+// import cors from "cors";
 
 dotenv.config();            // Load environment variables from .env
 connectDB();                // Connect to MongoDB
