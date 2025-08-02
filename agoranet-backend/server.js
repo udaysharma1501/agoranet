@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+import cors from "cors";
 
 dotenv.config();            // Load environment variables from .env
 connectDB();                // Connect to MongoDB
@@ -16,9 +17,16 @@ app.get("/api/ping", (req, res) => {
 });
 // --- test --- test --- test --- test --- test --- test --- test --- test --- test --- test ---
 
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
+
 // Middlewares
 app.use(cors());
 app.use(express.json());    // Parse JSON bodies
+app.options('*', cors());
 
 // Auth Routes
 const authRoutes = require("./routes/authRoutes");
