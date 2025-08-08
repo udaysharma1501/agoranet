@@ -5,6 +5,11 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",        // local dev
+  "https://agoranet1.vercel.app", // deployed frontend
+];
+
 // ✅ Parse JSON bodies
 // IMPORTANT ::: express.json() must come before any routes that read req.body
 app.use(express.json());  
@@ -12,10 +17,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // ✅ CORS setup
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
 
 // Connect DB
 connectDB();
