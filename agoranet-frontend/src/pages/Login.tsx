@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "D:\\Code\\agoranet\\agoranet-frontend\\src\\lib\\api";
+import API from "../lib/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,10 +8,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await API.post("/users/login", { email, password });
+      const res = await API.post("/auth/login", { email, password });
       localStorage.setItem("token", res.data.token);
       navigate("/");
     } catch (err: any) {
@@ -20,25 +20,33 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <div className="flex justify-center items-center min-h-screen">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-6 rounded-lg shadow-lg w-96"
+      >
+        <h2 className="text-2xl font-bold mb-4">Log In</h2>
+        {error && <p className="text-red-500 mb-2">{error}</p>}
         <input
           type="email"
           placeholder="Email"
-          className="border p-2 rounded"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="border w-full p-2 mb-3 rounded"
+          required
         />
         <input
           type="password"
           placeholder="Password"
-          className="border p-2 rounded"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="border w-full p-2 mb-4 rounded"
+          required
         />
-        <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+        <button
+          type="submit"
+          className="bg-green-500 text-white px-4 py-2 rounded w-full"
+        >
           Log In
         </button>
       </form>

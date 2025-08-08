@@ -17,6 +17,9 @@ app.get("/api/ping", (req, res) => {
 });
 // --- test --- test --- test --- test --- test --- test --- test --- test --- test --- test ---
 
+
+app.use('/api/users', require('./routes/userRoutes'));
+
 app.use(cors({
   origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -24,9 +27,9 @@ app.use(cors({
 }));
 
 // Middlewares
+app.options('*', cors());
 app.use(cors());
 app.use(express.json());    // Parse JSON bodies
-app.options('*', cors());
 
 // Auth Routes
 const authRoutes = require("./routes/authRoutes");
