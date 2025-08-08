@@ -10,10 +10,6 @@ const allowedOrigins = [
   "https://agoranet1.vercel.app", // deployed frontend
 ];
 
-// ✅ Parse JSON bodies
-// IMPORTANT ::: express.json() must come before any routes that read req.body
-app.use(express.json());  
-app.use(express.urlencoded({ extended: true }));
 
 // ✅ CORS setup
 app.use(cors({
@@ -29,6 +25,10 @@ app.use(cors({
   credentials: true
 }));
 
+// ✅ Parse JSON bodies
+// IMPORTANT ::: express.json() must come before any routes that read req.body
+app.use(express.json());  
+app.use(express.urlencoded({ extended: true }));
 
 // Connect DB
 connectDB();
